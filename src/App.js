@@ -14,17 +14,17 @@ function App() {
       name: "",
       isForGoodWeather: false,
     },
-  }); */
+  }); */ // wrong declaration default
 
   function onAddActivity(event) {
     event.preventDefault();
-
-    console.log("Before Set:", formData);
 
     const newFormData = {
       name: "",
       isForGoodWeather: false,
     };
+
+    console.log("Before Set:", formData);
 
     // Set the form data with the new data
     setFormData(newFormData);
@@ -47,8 +47,8 @@ function App() {
 }
 
 export function Form({ formData, setFormData, onAddActivity }) {
-  console.log("formData in Form:", formData);
-  console.log("formData.name in Form:", formData.name);
+  /*  console.log("formData in Form:", formData);
+  console.log("formData.name in Form:", formData.name); */
   return (
     <form id="addNewActivity">
       <h2>Add new activity</h2>
