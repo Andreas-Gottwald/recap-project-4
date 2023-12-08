@@ -1,28 +1,56 @@
 /* import logo from "./logo.svg"; */
 import "./App.css";
 import { useState } from "react";
-import { useEffect } from "react";
+//import { useEffect } from "react";
+//import useLocalStorageState from "use-local-storage-state";
 
 function App() {
   const [formData, setFormData] = useState({
     name: "",
-    goodWeather: false,
+    isForGoodWeather: false,
   });
-
-  /* function GetName() {
-
-  } */
-
-  /*   function GetGoodWeather() {}
-   */
+  /* const [formData, setFormData] = useLocalStorageState({
+    defaultValue: {
+      name: "",
+      isForGoodWeather: false,
+    },
+  }); */
 
   function onAddActivity(event) {
     event.preventDefault();
-    console.log("Activity added:", formData);
+
+    console.log("Before Set:", formData);
+
+    const newFormData = {
+      name: "",
+      isForGoodWeather: false,
+    };
+
+    // Set the form data with the new data
+    setFormData(newFormData);
+
+    console.log("After Set:", newFormData);
+
+    document.getElementById("addNewActivity").reset();
+    document.getElementById("name").focus();
   }
 
   return (
-    <form>
+    <>
+      <Form
+        formData={formData}
+        setFormData={setFormData}
+        onAddActivity={onAddActivity}
+      />
+    </>
+  );
+}
+
+export function Form({ formData, setFormData, onAddActivity }) {
+  console.log("formData in Form:", formData);
+  console.log("formData.name in Form:", formData.name);
+  return (
+    <form id="addNewActivity">
       <h2>Add new activity</h2>
       <label htmlFor="name">Name: </label>
       <input
@@ -37,15 +65,15 @@ function App() {
       <br />
       <br />
 
-      <label htmlFor="goodWeather">Good-weather activity: </label>
+      <label htmlFor="isForGoodWeather">Good-weather activity: </label>
 
       <input
         type="checkbox"
-        id="goodWeather"
-        name="goodWeather"
-        checked={formData.goodWeather}
+        id="isForGoodWeather"
+        name="isForGoodWeather"
+        checked={formData.isForGoodWeather}
         onChange={(event) =>
-          setFormData({ ...formData, goodWeather: event.target.checked })
+          setFormData({ ...formData, isForGoodWeather: event.target.checked })
         }
       ></input>
       <br />
