@@ -1,22 +1,18 @@
-/* import logo from "./logo.svg"; */
 import "./App.css";
-import { useState } from "react";
+// import { useState } from "react";
 //import { useEffect } from "react";
-//import useLocalStorageState from "use-local-storage-state";
-import Form from "./component/form";
+// import useLocalStorageState from "use-local-storage-state";
+import Form from "./component/Form/Form.js";
+import List from "./component/List/List.js";
 
-function App() {
+export default function App() {
   return (
     <>
       <ul>
-        <li>jsdfnousdnuo</li>
+        <List />
       </ul>
-      <Form
-      /* formData={formData}
-        setFormData={setFormData}
-        onAddActivity={onAddActivity} */
-      />
+      <Form />
+      {/* <Form onUpdateLocalStorageState={updateLocalStorageState} /> */}
     </>
   );
 }
-export default App;
