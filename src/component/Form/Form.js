@@ -1,31 +1,46 @@
 import { useState } from "react";
+import { uid } from "uid";
+// import { AddActivityToLocalStorage } from "../LocalStorage/LocalStorage.js";
+import useLocalStorageState from "use-local-storage-state";
 
 export default function Form() {
-  /*  console.log("formData in Form:", formData);
-    console.log("formData.name in Form:", formData.name); */
+  // ===============================
   const [formData, setFormData] = useState({
     name: "",
     isForGoodWeather: false,
   });
-
+  const [storedActivities, setStoredActivities] = useLocalStorageState(
+    "activities",
+    []
+  );
+  // ===============================
   const onAddActivity = (event) => {
     event.preventDefault();
-
-    const newFormData = {
+    const formDataDefault = {
       name: "",
       isForGoodWeather: false,
     };
-
-    console.log("Before Set:", formData);
-
-    // Set the form data with the new data
-    setFormData(newFormData);
-
-    console.log("After Set:", newFormData);
-
+    const newActivity = handleAddActivity(formData);
+    setFormData(formDataDefault);
     document.getElementById("addNewActivity").reset();
     document.getElementById("name").focus();
   };
+  // ===============================
+
+  function handleAddActivity(formData) {
+    if (formData.name === "") {
+      return;
+    }
+    const key = uid();
+    const newActivity = { id: key, ...formData };
+    console.log("newActivity is:", newActivity);
+    // setStoredActivities([]); // hard reset only for testing
+    const currentStoredActivities = storedActivities || [];
+    setStoredActivities([newActivity, ...currentStoredActivities]);
+    console.log("Stored activities: ", storedActivities);
+  }
+
+  // ===============================
   return (
     <form id="addNewActivity">
       <h2>Add new activity</h2>
@@ -37,8 +52,7 @@ export default function Form() {
         value={formData.name}
         onChange={(event) =>
           setFormData({ ...formData, name: event.target.value })
-        }
-      ></input>
+        }></input>
       <br />
       <br />
 
@@ -51,8 +65,7 @@ export default function Form() {
         checked={formData.isForGoodWeather}
         onChange={(event) =>
           setFormData({ ...formData, isForGoodWeather: event.target.checked })
-        }
-      ></input>
+        }></input>
       <br />
       <br />
       <button onClick={onAddActivity}>submit</button>
