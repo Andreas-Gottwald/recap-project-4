@@ -33,11 +33,11 @@ export default function Form() {
     }
     const key = uid();
     const newActivity = { id: key, ...formData };
-    console.log("newActivity is:", newActivity);
+    // console.log("newActivity is:", newActivity);
     // setStoredActivities([]); // hard reset only for testing
     const currentStoredActivities = storedActivities || [];
     setStoredActivities([newActivity, ...currentStoredActivities]);
-    console.log("Stored activities: ", storedActivities);
+    // console.log("Stored activities: ", storedActivities);
   }
 
   // ===============================

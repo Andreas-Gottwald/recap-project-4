@@ -9,7 +9,7 @@ export default function App() {
   return (
     <>
       <ul>
-        <li>jsdfnousdnuo</li>
+        <List />
       </ul>
       <Form />
       {/* <Form onUpdateLocalStorageState={updateLocalStorageState} /> */}
