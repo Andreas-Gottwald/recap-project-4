@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export default function List() {
+export default function List({ newEntryTrigger }) {
   const [activities, setActivities] = useState([]);
 
   // const dataFromLocalStorage = JSON.parse(localStorage.getItem("name"));
@@ -15,7 +15,7 @@ export default function List() {
     if (dataFromLocalStorage) {
       setActivities(dataFromLocalStorage);
     }
-  }, []); // The empty dependency array means this effect runs only once after the initial render
+  }, [newEntryTrigger]); // The empty dependency array means this effect runs only once after the initial render
 
   // return <li> Fragment including mapped data
 

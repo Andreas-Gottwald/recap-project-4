@@ -3,7 +3,7 @@ import { uid } from "uid";
 // import { AddActivityToLocalStorage } from "../LocalStorage/LocalStorage.js";
 import useLocalStorageState from "use-local-storage-state";
 
-export default function Form() {
+export default function Form({ onNewEntry }) {
   // ===============================
   const [formData, setFormData] = useState({
     name: "",
@@ -24,6 +24,7 @@ export default function Form() {
     setFormData(formDataDefault);
     document.getElementById("addNewActivity").reset();
     document.getElementById("name").focus();
+    onNewEntry();
   };
   // ===============================
 
