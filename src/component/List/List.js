@@ -1,11 +1,9 @@
+import { clear } from "@testing-library/user-event/dist/clear";
 import "./List.css";
 import { useState, useEffect } from "react";
 
-export default function List() {
+export default function List({ setListData }) {
   const [activities, setActivities] = useState([]);
-
-  // const dataFromLocalStorage = JSON.parse(localStorage.getItem("name"));
-  // console.log("dataFromLocalStorage", dataFromLocalStorage);
 
   useEffect(() => {
     // This code will be executed after the component has mounted
@@ -16,7 +14,7 @@ export default function List() {
     if (dataFromLocalStorage) {
       setActivities(dataFromLocalStorage);
     }
-  }, []); // Empty dependency array means this effect runs only once after the initial render
+  }, [setListData]); // Empty dependency array means this effect runs only once after the initial render
 
   return (
     <>

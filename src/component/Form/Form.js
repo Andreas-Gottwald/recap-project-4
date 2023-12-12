@@ -3,7 +3,7 @@ import { uid } from "uid";
 // import { AddActivityToLocalStorage } from "../LocalStorage/LocalStorage.js";
 import useLocalStorageState from "use-local-storage-state";
 
-export default function Form() {
+export default function Form({ setListData }) {
   // ===============================
   const [formData, setFormData] = useState({
     name: "",
@@ -21,6 +21,7 @@ export default function Form() {
       isForGoodWeather: false,
     };
     const newActivity = handleAddActivity(formData);
+    setListData((prevActivities) => [newActivity, ...(prevActivities || [])]);
     setFormData(formDataDefault);
     document.getElementById("addNewActivity").reset();
     document.getElementById("name").focus();
