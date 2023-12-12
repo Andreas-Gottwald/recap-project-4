@@ -1,0 +1,17 @@
+.list__container {
+  /* min-height: 100vh; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.list__item {
+  width: 60%;
+  background-color: #afd4ed;
+  margin: 0.2rem;
+  padding: 0.4rem 1.2rem;
+  list-style: none;
+}

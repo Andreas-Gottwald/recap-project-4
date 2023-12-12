@@ -1,3 +1,4 @@
+import "./List.css";
 import { useState, useEffect } from "react";
 
 export default function List() {
@@ -15,15 +16,17 @@ export default function List() {
     if (dataFromLocalStorage) {
       setActivities(dataFromLocalStorage);
     }
-  }, []); // The empty dependency array means this effect runs only once after the initial render
-
-  // return <li> Fragment including mapped data
+  }, []); // Empty dependency array means this effect runs only once after the initial render
 
   return (
     <>
-      {activities.map((activity, index) => (
-        <li key={index}>{activity.name}</li>
-      ))}
+      <ul className="list__container">
+        {activities.map((activity, index) => (
+          <li className="list__item" key={index}>
+            {activity.name}
+          </li>
+        ))}
+      </ul>
     </>
   );
 }

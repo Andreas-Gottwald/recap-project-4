@@ -8,11 +8,8 @@ import List from "./component/List/List.js";
 export default function App() {
   return (
     <>
-      <ul>
-        <List />
-      </ul>
+      <List />
       <Form />
-      {/* <Form onUpdateLocalStorageState={updateLocalStorageState} /> */}
     </>
   );
 }
